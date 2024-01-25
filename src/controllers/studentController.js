@@ -1,0 +1,101 @@
+const APIError = require('../apiError/ApiError')
+const { executeQuery } = require("../helper");
+
+
+module.exports = {
+    all: async (req, res, next) => {
+        //apsirasome sql uzklausa
+        const sql = 'SELECT * FROM student';
+
+        //ivygdome parsyta uzklaussa
+        const [items, error] = await executeQuery(sql);
+
+        //jei gryzta klaida parodome ja
+        if (error) {
+            return next(error);
+        }
+
+        //saraso grazinimas
+        res.json(items);
+    },
+    single: async (req, res, next) => {
+        const { id } = req.params;
+
+        const sql = 'SELECT * FROM student WHERE id=?';
+
+        const [items, error] = await executeQuery(sql, [id]);
+
+        if (error) {
+            return next(error);
+        }
+
+        res.json(items[0]);
+
+    },
+    create: async (req, res, next) => {
+
+        const { firstname, latsname, email } = req.body;
+
+const sql = `INSERT INTO student (firstname, latsname, email) 
+        VALUES(?, ?, ?)`;
+
+        const [responseObject, error] =await executeQuery (sql, [firstname, latsname, email]);
+
+
+        if (error) {
+            return next(error);
+        }
+
+        if(responseObject.affectedRows !==1) {
+            return next (new APIError('something went wrong', 400))
+        }
+
+        res.status(201).json({
+            id: responseObject.insertId,
+            message: 'Student created successfully'
+        })
+    },
+
+    update: async (req, res, next) => {
+        const { id } = req.params;
+
+        const { firstname, latsname, email } = req.body;
+
+        const sql = 'UPDATE student SET firstname=?, latsname=?, email=? WHERE id=? '
+
+        const [responseObject, error] = await executeQuery(sql, [firstname, latsname, email, id])
+    
+        if (error) {
+            return next(error);
+        }
+
+        if(responseObject.affectedRows !==1) {
+            return next (new APIError('something went wrong', 400))
+        }
+
+        res.status(201).json({
+            id: id,
+            message: `Student with id:${id} updated successfully`
+        })
+    },
+
+    delete: async (req, res, next) => {
+        const { id } = req.params;
+        
+
+        const sql = 'DELETE FROM `student` WHERE id=?';
+
+        const [responseObject, error] = await executeQuery(sql, [id]);
+
+        if (error) {
+            return next (error);
+        }
+        if(responseObject.affectedRows !==1) {
+            return next (new APIError('something went wrong', 400))
+        }
+        res.status(200).json({
+            message: 'Student deleted'
+        })
+
+    }
+}

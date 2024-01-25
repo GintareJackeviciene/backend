@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-
 const { executeQuery } = require('./helper')
+const studentRouter =require('./routes/studentRoutes');
+const { mainErrorHandler } = require('./middleware');
 
 const app = express();
 
@@ -15,9 +16,12 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
+
 app.get('/', (req, res) => {
     res.json({message: 'server is running'})
 });
+
+app.use('/api', studentRouter);
 
 app.get('/test-connection', async (req, res) => {
     const sql = "SELECT * FROM student";
@@ -25,7 +29,9 @@ app.get('/test-connection', async (req, res) => {
     console.log('students ===', students);
     res.json(students)
 
-})
+});
+
+app.use(mainErrorHandler);
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
