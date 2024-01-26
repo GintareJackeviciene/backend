@@ -13,6 +13,9 @@ const mainErrorHandler = (errorGot, req, res, next) => {
         error: 'Internal system error',
     });
 };
+
+
+
 module.exports = {
     mainErrorHandler
 }

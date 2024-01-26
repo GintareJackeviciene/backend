@@ -34,12 +34,12 @@ module.exports = {
     },
     create: async (req, res, next) => {
 
-        const { firstname, latsname, email } = req.body;
+        const { firstname, lastname, email } = req.body;
 
-const sql = `INSERT INTO student (firstname, latsname, email) 
+const sql = `INSERT INTO student (firstname, lastname, email) 
         VALUES(?, ?, ?)`;
 
-        const [responseObject, error] =await executeQuery (sql, [firstname, latsname, email]);
+        const [responseObject, error] =await executeQuery (sql, [firstname, lastname, email]);
 
 
         if (error) {
@@ -61,7 +61,7 @@ const sql = `INSERT INTO student (firstname, latsname, email)
 
         const { firstname, latsname, email } = req.body;
 
-        const sql = 'UPDATE student SET firstname=?, latsname=?, email=? WHERE id=? '
+        const sql = 'UPDATE student SET firstname=?, lastname=?, email=? WHERE id=? '
 
         const [responseObject, error] = await executeQuery(sql, [firstname, latsname, email, id])
     

@@ -22,9 +22,9 @@ POST http://localhost:3000/api/students/
 Content-Type: application/json
 
 {
-   "firstname": "Lina",
-  "latsname": "Linaite",
-  "email": "lina@bit.lt" 
+   "firstname": "kosmosas",
+  "lastname": "kosmosiene",
+  "email": "kosmosas@bit.lt" 
 }
 
 ### UPDATE single student
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 {
 "firstname": "Vardenis",
-  "latsname": "Pavardenis",
+  "lastname": "Pavardenis",
   "email": "vadrenis@bit.lt" 
 }
 
