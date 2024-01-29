@@ -10,7 +10,7 @@ GET http://localhost:3000/api/students
 
 
 ### get single student
-GET http://localhost:3000/api/students/2
+GET http://localhost:3000/api/students/7
 
 
 ### get single student
@@ -28,16 +28,16 @@ Content-Type: application/json
 }
 
 ### UPDATE single student
-PUT http://localhost:3000/api/students/1
+PUT http://localhost:3000/api/students/7
 Content-Type: application/json
 
 {
-"firstname": "Vardenis",
-  "lastname": "Pavardenis",
-  "email": "vadrenis@bit.lt" 
+"firstname": "Petras1111",
+  "lastname": "Petraitis",
+  "email": "petras@bit.lt" 
 }
 
 
 
 ### delete single student
-DELETE http://localhost:3000/api/students/5
+DELETE http://localhost:3000/api/students/21

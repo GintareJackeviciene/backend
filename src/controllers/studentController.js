@@ -59,11 +59,11 @@ const sql = `INSERT INTO student (firstname, lastname, email)
     update: async (req, res, next) => {
         const { id } = req.params;
 
-        const { firstname, latsname, email } = req.body;
+        const { firstname, lastname, email } = req.body;
 
         const sql = 'UPDATE student SET firstname=?, lastname=?, email=? WHERE id=? '
 
-        const [responseObject, error] = await executeQuery(sql, [firstname, latsname, email, id])
+        const [responseObject, error] = await executeQuery(sql, [firstname, lastname, email, id])
     
         if (error) {
             return next(error);
