@@ -1,5 +1,6 @@
 const express = require('express');
 const studentController = require('../controllers/studentController');
+const { validateJWTToken } = require('../middleware');
 
 const studentRouter =  express.Router();
 
@@ -10,13 +11,13 @@ studentRouter.get('/students', studentController.all);
 studentRouter.get('/students/:id', studentController.single);
 
 //POST /api/students irasyti studenta
-studentRouter.post('/students', studentController.create);
+studentRouter.post('/students', validateJWTToken, studentController.create);
 
 //PUT /api/students/:id studento duomenu atnuajinimas
-studentRouter.put('/students/:id', studentController.update);
+studentRouter.put('/students/:id',validateJWTToken, studentController.update);
 
 //DELETE /api/students/:id istrina pagal id
-studentRouter.delete('/students/:id', studentController.delete);
+studentRouter.delete('/students/:id', validateJWTToken, studentController.delete);
 
 
 module.exports = studentRouter;

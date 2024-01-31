@@ -20,6 +20,7 @@ GET http://localhost:3000/api/students/2
 ### POST create single student
 POST http://localhost:3000/api/students/
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXIiOnsiaWQiOjUsImVtYWlsIjoidmFpZG90YXNAZ21haWwuY29tIiwic2NvcGUiOiJhZG1pbiJ9LCJpYXQiOjE3MDY2OTUzOTMsImV4cCI6MTcwNjY5ODk5M30.Ly4RCYhzc5vHNc6ohVT9QhRvX1Jzy2oNjX6zQ4A6NlE
 
 {
    "firstname": "kosmosas",
@@ -41,3 +42,21 @@ Content-Type: application/json
 
 ### delete single student
 DELETE http://localhost:3000/api/students/21
+
+### POST Register User
+ POST http://localhost:3000/api/auth/register 
+ Content-Type: application/json
+
+{
+"email": "jane@gmail.com", 
+"password": "123456"
+}
+
+### POST Login User
+ POST http://localhost:3000/api/auth/login 
+ Content-Type: application/json
+
+{
+"email": "vaidotas@gmail.com", 
+"password": "123456"
+}
