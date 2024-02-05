@@ -10,10 +10,6 @@ GET http://localhost:3000/api/students
 
 
 ### get single student
-GET http://localhost:3000/api/students/7
-
-
-### get single student
 GET http://localhost:3000/api/students/2
 
 
@@ -60,3 +56,41 @@ DELETE http://localhost:3000/api/students/21
 "email": "vaidotas@gmail.com", 
 "password": "123456"
 }
+
+### get all users
+GET http://localhost:3000/api/user
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXIiOnsiaWQiOjUsImVtYWlsIjoidmFpZG90YXNAZ21haWwuY29tIiwic2NvcGUiOiJhZG1pbiJ9LCJpYXQiOjE3MDY4Njk4MDQsImV4cCI6MTcwNjg3MzQwNH0.BDvKnhFXoS2J9msl4mk06GL0VkQBa5qdnnKgEv6P4KA
+
+### get single user
+GET http://localhost:3000/api/user/6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXIiOnsiaWQiOjUsImVtYWlsIjoidmFpZG90YXNAZ21haWwuY29tIiwic2NvcGUiOiJhZG1pbiJ9LCJpYXQiOjE3MDY4Njk4MDQsImV4cCI6MTcwNjg3MzQwNH0.BDvKnhFXoS2J9msl4mk06GL0VkQBa5qdnnKgEv6P4KA
+
+### POST create single user
+POST http://localhost:3000/api/user/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXIiOnsiaWQiOjUsImVtYWlsIjoidmFpZG90YXNAZ21haWwuY29tIiwic2NvcGUiOiJhZG1pbiJ9LCJpYXQiOjE3MDY4Njk4MDQsImV4cCI6MTcwNjg3MzQwNH0.BDvKnhFXoS2J9msl4mk06GL0VkQBa5qdnnKgEv6P4KA
+
+
+{
+  "email": "kosmosas@bit.lt",
+  "password": "123456",
+  "scope:": "manager",
+  "verified": 1
+}
+
+### UPDATE single user
+PUT http://localhost:3000/api/users/6
+Content-Type: application/json
+
+{
+
+  "email": "serbentautas1@gmail.com",
+  "password": "123456",
+  "scope:": "manager" ,
+  "verified": 1
+}
+
+### delete single user
+DELETE http://localhost:3000/api/users/14

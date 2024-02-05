@@ -6,8 +6,7 @@ const APIError = require('../apiError/ApiError');
 
 const login = async (req, res, next) => {
     const {email, password} = req.body;
-
-    const sql = 'SELECT * FROM `user` WHERE `email` = ?';
+    const sql = 'SELECT * FROM `user` WHERE `email` = ? AND `verified` = 1 ';
     const [responseObject, error] = await executeQuery(sql, [email]);
 
     if (error) {
